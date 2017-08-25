@@ -1,4 +1,4 @@
-package org.arenda.dao;
+package org.Module;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
