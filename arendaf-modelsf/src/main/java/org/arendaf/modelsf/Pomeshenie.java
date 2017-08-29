@@ -1,4 +1,4 @@
-package org.Module;
+package org.arendaf.modelsf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,25 +27,32 @@ public class Pomeshenie {
 
 	@Column(name = "Nachislenie_idnaciskenie")
 	@OneToMany
-	private List<NachislenieIdnachislenie> nachislenieIdnachislenie = new ArrayList<Arendator>();
+	private List<Nachislenie> nachislenieIdnachislenie = new ArrayList<Nachislenie>();
 
-	private List<Pomeshenie> pomeshenie = new ArrayList<Pomeshenie>();
+	@Column(name = "Arendator_idnArendator")
+	@OneToMany
+	private List<Arendator> arendatorIdnArendator = new ArrayList<Arendator>();
 
-	public Pomeshenie(int idPomeschenie, String adres, double ploshad, String info, 
-			ArrayList<NachislenieIdnachislenie> nachislenieIdnachislenie, ArrayList<Pomeshenie> pomeshenie) {
-		
+	@Column(name = "Oplata_idOplata")
+	@OneToMany
+	private List<Oplata> oplataIdnOplata = new ArrayList<Oplata>();
+
+	public Pomeshenie(int idPomeschenie, String adres, double ploshad, String info,
+			ArrayList<Nachislenie> nachislenieIdnachislenie, ArrayList<Arendator> arendatorIdnArendator,
+			ArrayList<Oplata> oplataIdnOplata) {
+
 		this.idPomeschenie = idPomeschenie;
 		this.adres = adres;
 		this.ploshad = ploshad;
 		this.info = info;
 		this.nachislenieIdnachislenie = nachislenieIdnachislenie;
-		this.pomeshenie = pomeshenie;
-		}
-			
-	public Pomeshenie() {}
-	
-	
-	
+		this.arendatorIdnArendator = arendatorIdnArendator;
+		this.oplataIdnOplata = oplataIdnOplata;
+	}
+
+	public Pomeshenie() {
+	}
+
 	public int getIdPomeschenie() {
 		return idPomeschenie;
 	}
@@ -78,20 +85,12 @@ public class Pomeshenie {
 		this.info = info;
 	}
 
-	public List<NachislenieIdnachislenie> getNachislenieIdnachislenie() {
+	public List<Nachislenie> getNachislenieIdnachislenie() {
 		return nachislenieIdnachislenie;
 	}
 
-	public void setNachislenieIdnachislenie(List<NachislenieIdnachislenie> nachislenieIdnachislenie) {
+	public void setNachislenieIdnachislenie(List<Nachislenie> nachislenieIdnachislenie) {
 		this.nachislenieIdnachislenie = nachislenieIdnachislenie;
-	}
-
-	public List<Pomeshenie> getPomeshenie() {
-		return pomeshenie;
-	}
-
-	public void setPomeshenie(List<Pomeshenie> pomeshenie) {
-		this.pomeshenie = pomeshenie;
 	}
 
 	@Override
@@ -101,5 +100,6 @@ public class Pomeshenie {
 		sb.append(", adres='").append(adres).append('\'');
 		sb.append('}');
 		return sb.toString();
-}
+	}
+
 }
